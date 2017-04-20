@@ -1,0 +1,53 @@
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+import java.io.Serializable;
+
+//https://github.com/marcosfelipp/chatudp
+//https://github.com/marcosfelipp/jogoForcaP2P/tree/master/JogoForca/src
+
+public class ClienteSimples {
+
+    private String host = "localhost";
+    private int myPortaCliente;
+
+    private int portaHost = 4897;
+
+    public static void main(String[] args)  throws UnknownHostException, IOException{
+
+      System.out.println("Digite uma porta para sua conexão com outros clilentess");
+      //this.myPortaCliente = Ler porta para sua conexão com outros clinetes
+      Socket cliente = new Socket(host,portaHost);
+
+      Mensagem loguinServidor = new Mensagem();
+      //  FAzer a serialização da mensagem(OBJETO) e enviar mensagem para servidor e aguardar a resposta
+      Mensagem requisicaoContato = new Mensagem();
+      // O cliente agora conectado envia para o servidor a requição de um novo contato
+      //Quando voçê receber a mensagem com o contato faz uma conexão UDP com cliente
+      // Aí eh só implementar o chat
+    }
+
+}
+
+//Por essa classe em outro arquivo, ela vai ser ultilizada pelo cliente e pelo servidor
+public class Mensagem{
+    private int mensagenId; /*Você tem que criar um padrão de id para mensagens para quando seu cliente enviar um objeto o servidor
+    saiba do que se trata essa mensagem, você trata com if exemplo: mensagem de loguin é 1 ->> if mensagemId == 1  mensagem de requisição de contato eh 2 --- veja o meu código no git */
+    private int porta;
+    private String email;
+    private String mensagem; //em mensagem você pode colocar qualquer coisa, voce só terá que tratar ela no servidor
+
+    public Mensagem(int mensagenId){
+      this.mensagenId = mensagenId;
+
+    }
+}
+
+
+//
+//        Registrar-se no Servidor informando: identificador do usuário (e.g., e-mail), senha
+//        , IP e Porta utilizados para receber mensagens de outros clientes;
+//        Consultar o servidor, informando o identificador de um outro usuário,
+//        para obter o endereço IP e o número de porta associados à instância da aplicação cliente daquele usuário quando desejar estabelecer comunicação com ele(a);
+//        Usar TCP para se comunicar com o servidor e UDP para se comunicar com outros clientes.
